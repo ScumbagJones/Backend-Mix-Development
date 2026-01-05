@@ -1,0 +1,21 @@
+# Core dependencies
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Music identification and metadata
+musicbrainzngs>=0.7.1
+pyacoustid>=1.2.2
+
+# Audio processing
+yt-dlp>=2023.12.30
+mutagen>=1.47.0
+
+# Spotify integration
+spotipy>=2.23.0
+
+# Web scraping (for SoundCloud, Bandcamp)
+beautifulsoup4>=4.12.0
+lxml>=4.9.3
+
+# Data handling
+pydantic>=2.5.0
