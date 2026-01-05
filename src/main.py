@@ -7,10 +7,10 @@ from pathlib import Path
 from typing import List
 from dotenv import load_dotenv
 
-from extractors import SpotifyExtractor, YouTubeExtractor
-from identification import SongMatcher
-from downloaders import YouTubeDownloader
-from utils.models import Playlist, Track
+from src.extractors import SpotifyExtractor, YouTubeExtractor
+from src.identification import SongMatcher
+from src.downloaders import YouTubeDownloader
+from src.utils.models import Playlist, Track
 
 
 # Load environment variables
