@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 # Add src to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-from src.extractors import SpotifyExtractor, YouTubeExtractor
+from src.extractors import SpotifyExtractor, YouTubeExtractor, SoundCloudExtractor, BandcampExtractor
 from src.identification import SongMatcher
 from src.downloaders import YouTubeDownloader
 from src.utils.models import Playlist, Track
@@ -53,8 +53,14 @@ def extract_playlist():
         elif 'youtube.com' in url or 'youtu.be' in url:
             extractor = YouTubeExtractor()
             playlist = extractor.extract_playlist(url)
+        elif 'soundcloud.com' in url:
+            extractor = SoundCloudExtractor()
+            playlist = extractor.extract_playlist(url)
+        elif 'bandcamp.com' in url:
+            extractor = BandcampExtractor()
+            playlist = extractor.extract_album(url)
         else:
-            return jsonify({'error': 'Unsupported URL. Use Spotify or YouTube.'}), 400
+            return jsonify({'error': 'Unsupported URL. Use Spotify, YouTube, SoundCloud, or Bandcamp.'}), 400
 
         if not playlist:
             return jsonify({'error': 'Failed to extract playlist'}), 500
@@ -177,6 +183,12 @@ def quick_convert():
         elif 'youtube.com' in url or 'youtu.be' in url:
             extractor = YouTubeExtractor()
             playlist = extractor.extract_playlist(url)
+        elif 'soundcloud.com' in url:
+            extractor = SoundCloudExtractor()
+            playlist = extractor.extract_playlist(url)
+        elif 'bandcamp.com' in url:
+            extractor = BandcampExtractor()
+            playlist = extractor.extract_album(url)
         else:
             return jsonify({'error': 'Unsupported URL'}), 400
 
